@@ -68,19 +68,23 @@ router.post('/register', (req, res) => {
                                         email,
                                         password,
                                 });
-
+                                // Passwort Hashen mit Bcrypt (aus Bcrypt Dokumentation)
                                 bcrypt.genSalt(10, (err, salt) => {
                                         bcrypt.hash(newUser.password, salt, (err, hash) => {
                                                 if (err) throw err;
+                                                // Passwort wurde gehasht
                                                 newUser.password = hash;
+                                                // Benutzer speichern
                                                 newUser.save()
                                                         .then(user => {
+                                                                // wenn erfolgreich, dann Erfolgsnachricht und redirecten zu login Seite
                                                                 req.flash(
                                                                         'success_msg',
                                                                         'Erfolgreich registriert. Du kannst dich nun einloggen'
                                                                 );
                                                                 res.redirect('/users/login');
                                                         })
+                                                        // Falls fehler dann Error message
                                                         .catch(err => console.log(err));
                                         });
                                 });
