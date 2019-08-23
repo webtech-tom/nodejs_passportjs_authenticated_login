@@ -1,4 +1,4 @@
 module.exports = {
         MongoURI:
-                'mongodb+srv://<USERNAME>:<PASSWORD>@nodejspassportboilerplate-xbqgg.mongodb.net/test?retryWrites=true&w=majority',
+                'mongodb+srv://<YourUSERNAME>:<PASSWORD>@nodejspassportboilerplate-xbqgg.mongodb.net/test?retryWrites=true&w=majority',
 };
