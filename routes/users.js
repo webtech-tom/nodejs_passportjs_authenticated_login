@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 const router = express.Router();
 
@@ -93,7 +94,7 @@ router.post('/register', (req, res) => {
         }
 });
 
-// Login
+// Login Handler, damit beim Login die Lokale Strategie genutzt wird, siehe auch Documentation unter "Custom Callback"
 router.post('/login', (req, res, next) => {
         passport.authenticate('local', {
                 successRedirect: '/dashboard',
